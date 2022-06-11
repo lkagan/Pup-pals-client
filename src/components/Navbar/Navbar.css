@@ -1,0 +1,73 @@
+nav {
+    height: 200px;
+    padding: 1rem;
+    position: relative;
+  
+    /* justify-content: space-around;
+    flex-wrap: wrap; */
+    background: rgb(238,231,174);
+    background: linear-gradient(90deg, rgba(238,231,174,.5) 0%, rgba(148,233,208,.5) 100%);
+    font-weight: 600;
+  
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+  }
+  
+  .dog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .logo {
+    float: left;
+    
+  }
+  
+  .nav__authLinks {
+    float: right;
+    
+  }
+  
+  .nav__projectName {
+    color: #e4f9ff;
+    text-decoration: none;
+  }
+  
+  .authLink {
+    color: #61dafb;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .authLink + .authLink {
+    padding: 1em;
+  }
+  
+  .authLink:hover {
+    color: #ffffff;
+  }
+  
+  .nav-logoutbtn {
+    font-family: inherit;
+    font-weight: inherit;
+    padding: 0.5em 1em;
+    margin-left: 1em;
+    background-color: #5595ff;
+    box-shadow: 0 0 5px 0 aliceblue;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    color: #e3f2ff;
+    transition: all 0.2s ease-in-out;
+    position: sticky;
+    top: 0;
+  }
+  
+  .nav-logoutbtn:hover {
+    transform: scale(1.05);
+    background-color: #d13e3e;
+  }
+  

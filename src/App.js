@@ -1,25 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+//components
+import NavBar from './components/Navbar/Navbar';
+
+//pages
+import Login from './pages/LogIn';
+import HomePage from './pages/HomePage';
+import UserProfile from './pages/UserProfile';
+import DogProfile from './pages/DogProfile';
+import Signup from './pages/Signup';
+
+
+
+//providers
+import { UserProvider } from './contexts/UserContext';
+import ProtectedRoute from './routeGuard/ProtectedRoute';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {/* Wrapping our entire App here, so that we can use context values anywhere (components, pages) */}
+      <UserProvider>
+          <div className="App">
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="user" element={<UserProfile />} />
+                <Route path="dog" element={<DogProfile />} />
+               
+              </Route>
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+            </Routes>
+          </div>
+      </UserProvider>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
