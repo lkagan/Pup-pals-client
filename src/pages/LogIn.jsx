@@ -33,7 +33,7 @@ export default function LogIn({ authenticate }) {
         formData
       );
       setUser(() => data);
-      console.log(data);
+      localStorage.setItem("token", data.token);
     } catch (error) {
       console.error(error);
     }

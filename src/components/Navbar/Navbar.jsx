@@ -33,7 +33,7 @@ const Navbar = (props) => {
           <NavLink to={"/dog"} className="authLink">
             Pup Profile
             </NavLink>
-            <NavLink to={"/user"} className="authLink">
+            <NavLink to={`/user/`} className="authLink">
             
             Hooman Profile
             </NavLink>

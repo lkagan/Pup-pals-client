@@ -8,7 +8,7 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 const UserProfile = () => {
-  const { user } = useContext(UserContext);
+  const { user,setUser } = useContext(UserContext);
 
   const defaultFormData = {
     name: "",
@@ -19,21 +19,21 @@ const UserProfile = () => {
 
   const [formData, setFormData] = useState(defaultFormData);
   const navigateTo = useNavigate();
-  const { id } = useParams();
+
 
   const getProfileDetails = async () => {
     const { data } = await axios.get(`http://localhost:5005/user/${user._id}`);
-    // setUser(() => data);
+    setUser(() => data);
     setFormData(() => data);
   };
 
 
   const updateProfile = async () => {
     const { data } = await axios.post(
-      `http://localhost:5005/api/user/${id}`,
+      `http://localhost:5005/user/${user._id}`,
       formData
     );
-    // setUser(data);
+   setUser(data);
     console.log(data);
   };
 
@@ -68,7 +68,7 @@ const UserProfile = () => {
   const onSubmit = () => {
     try {
       updateProfile();
-      navigateTo("/dog/profile");
+      navigateTo("/dog");
     } catch (err) {
       console.log(err);
     }
