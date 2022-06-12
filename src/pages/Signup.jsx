@@ -30,6 +30,7 @@ export default function Signup({ authenticate }) {
         formData
       );
       setUser(() => data);
+      navigate("/user");
       console.log(data);
     } catch (error) {
       console.error(error);

@@ -49,6 +49,12 @@ const DogProfile = () => {
     }
   }, []);
 
+  // const uploadImage = (file) => {
+  //   return api.post("/dog", file)
+  //     .then(res => res.data)
+  //     .catch(errorHandler);
+  // };
+
   const onChange = (e) => {
     setFormData({
       ...formData,
@@ -80,7 +86,7 @@ const DogProfile = () => {
   const onSubmit = () => {
     try {
       createProfile();
-      navigateTo("/dog/profile");
+      navigateTo("/search");
     } catch (err) {
       console.log(err);
     }
