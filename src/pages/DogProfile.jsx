@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext} from "react";
 import { Form, Select, Button, Input, InputNumber, Space, Card } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import {authAxios as axios} from "../customAxios/authAxios";
+
 const { Option } = Select;
 const { TextArea } = Input;
 
@@ -86,7 +87,7 @@ const DogProfile = () => {
   const onSubmit = () => {
     try {
       createProfile();
-      navigateTo("/search");
+      // navigateTo("/search");
     } catch (err) {
       console.log(err);
     }
@@ -135,7 +136,7 @@ const DogProfile = () => {
               <Option value="small">Small</Option>
               <Option value="medium">Medium</Option>
               <Option value="large">Large</Option>
-              <Option value="verylarge">Very Large</Option>
+              <Option value="very large">Very Large</Option>
             </Select>
             <label htmlFor="input-gender">Gender: </label>
             <Select

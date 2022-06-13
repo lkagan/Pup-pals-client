@@ -22,7 +22,7 @@ const UserProfile = () => {
 
 
   const getProfileDetails = async () => {
-    const { data } = await axios.get(`http://localhost:5005/user/${user._id}`);
+    const { data } = await axios.get(`http://localhost:5005/api/user/${user._id}`);
     setUser(() => data);
     setFormData(() => data);
   };
@@ -30,7 +30,7 @@ const UserProfile = () => {
 
   const updateProfile = async () => {
     const { data } = await axios.post(
-      `http://localhost:5005/user/${user._id}`,
+      `http://localhost:5005/api/user/${user._id}`,
       formData
     );
    setUser(data);

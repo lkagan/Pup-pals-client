@@ -26,7 +26,7 @@ export default function Signup({ authenticate }) {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        `http://localhost:5005/signup`,
+        `http://localhost:5005/api/auth/signup`,
         formData
       );
       setUser(() => data);
