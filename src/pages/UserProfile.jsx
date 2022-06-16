@@ -1,14 +1,15 @@
-import { useState, useEffect, useContext} from "react";
-import UserContext from '../contexts/UserContext';
+import { useState, useEffect, useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 import { Form, Select, Button, Input, InputNumber } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import errorMessage from "../utils/errorMessage";
 const { Option } = Select;
 const { TextArea } = Input;
 
 const UserProfile = () => {
-  const { user,setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const defaultFormData = {
     name: "",
@@ -20,28 +21,30 @@ const UserProfile = () => {
   const [formData, setFormData] = useState(defaultFormData);
   const navigateTo = useNavigate();
 
-
   const getProfileDetails = async () => {
-    const { data } = await axios.get(`http://localhost:5005/api/user/${user._id}`);
+    const { data } = await axios.get(
+      `http://localhost:5005/api/user/${user._id}`
+    );
     setUser(() => data);
     setFormData(() => data);
   };
 
-
   const updateProfile = async () => {
-    const { data } = await axios.post(
-      `http://localhost:5005/api/user/${user._id}`,
-      formData
-    );
-   setUser(data);
-    console.log(data);
+    try {
+      const { data } = await axios.post(
+        `http://localhost:5005/api/user/${user._id}`,
+        formData
+      );
+      setUser(data);
+      navigateTo("/dog");
+    } catch (err) {
+      errorMessage(err);
+    }
   };
 
   useEffect(() => {
     getProfileDetails();
-
   }, []);
-
 
   const onChange = (e) => {
     setFormData({
@@ -61,30 +64,26 @@ const UserProfile = () => {
     setFormData({
       ...formData,
       gender: value,
-  });
+    });
   };
 
-
   const onSubmit = () => {
-    try {
-      updateProfile();
-      navigateTo("/dog");
-    } catch (err) {
-      console.log(err);
-    }
+    updateProfile();
   };
 
   return (
     <div>
       <h1>Hooman Profile</h1>
       <Form onFinish={onSubmit}>
-       <label htmlFor="input-name">Name: </label>
-          <Input allowClear placeholder="Vending machine" 
+        <label htmlFor="input-name">Name: </label>
+        <Input
+          allowClear
+          placeholder="Vending machine"
           label="Name"
           name="name"
           value={formData.name}
           onChange={onChange}
-          />
+        />
 
         <label htmlFor="input-age">Age: </label>
         <InputNumber

@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import "./Signup";
 import axios from "axios";
 import UserContext from '../contexts/UserContext';
+import { Button, Checkbox, Form, Input } from 'antd';
+
 
 
 
@@ -24,6 +26,13 @@ export default function LogIn({ authenticate }) {
     return setFormData({ ...formData, [name]: value });
   }
 
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
 
   const submitFormData = async (e) => {
     e.preventDefault();
@@ -82,5 +91,87 @@ export default function LogIn({ authenticate }) {
               Signup
             </Link>
     </div>
+    // <div>
+    // <h2>Log In</h2>
+    // <Form
+    //   name="basic"
+    //   labelCol={{
+    //     span: 8,
+    //   }}
+    //   wrapperCol={{
+    //     span: 16,
+    //   }}
+    //   initialValues={{
+    //     remember: true,
+    //   }}
+    //   onSubmit={submitFormData}
+    //   onFinish={onFinish}
+    //   onFinishFailed={onFinishFailed}
+    //   autoComplete="off"
+    // >
+    //   <Form.Item
+      
+    //     label="Email"
+    //     type="email"
+    //       name="email"
+    //       placeholder="Email"
+    //       value={email}
+    //       onChange={handleInputChange}
+    //     rules={[
+    //       {
+    //         required: true,
+    //         message: 'Please input your email!',
+    //       },
+    //     ]}
+    //   >
+    //     <Input />
+    //   </Form.Item>
+
+    //   <Form.Item
+    //     label="Password"
+    //     type="password"
+    //       name="password"
+    //       placeholder="Password"
+    //       value={password}
+    //       onChange={handleInputChange}
+    //     rules={[
+    //       {
+    //         required: true,
+    //         message: 'Please input your password!',
+    //       },
+    //     ]}
+    //   >
+    //     <Input.Password />
+    //   </Form.Item>
+
+    //   <Form.Item
+    //     name="remember"
+    //     valuePropName="checked"
+    //     wrapperCol={{
+    //       offset: 8,
+    //       span: 16,
+    //     }}
+    //   >
+    //     <Checkbox>Remember me</Checkbox>
+    //   </Form.Item>
+
+    //   <Form.Item
+    //     wrapperCol={{
+    //       offset: 8,
+    //       span: 16,
+    //     }}
+    //   >
+    //     <Button type="primary" htmlType="submit">
+    //       Submit
+    //     </Button>
+    //   </Form.Item>
+    // </Form>
+    // </div>
   );
 }
+
+
+
+
+ 
+    
