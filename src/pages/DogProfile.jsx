@@ -43,10 +43,10 @@ const DogProfile = () => {
 
   const updateProfile = async () => {
     try {
-    const { data } = await axios.put(
-      `http://localhost:5005/api/dog/${id}`,
-      formData
-    );
+      const { data } = await axios.put(
+        `http://localhost:5005/api/dog/${id}`,
+        formData
+      );
     } catch (err) {
       errorMessage(err);
     }
@@ -60,7 +60,7 @@ const DogProfile = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [id]);
 
   // const uploadImage = (file) => {
   //   return api.post("/dog", file)
@@ -98,7 +98,11 @@ const DogProfile = () => {
 
   const onSubmit = () => {
     try {
-      createProfile();
+      if (id) {
+        updateProfile();
+      } else {
+        createProfile();
+      }
       // navigateTo("/search");
     } catch (err) {
       console.log(err);
