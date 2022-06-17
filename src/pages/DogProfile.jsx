@@ -11,6 +11,7 @@ const { TextArea } = Input;
 
 const DogProfile = () => {
   const defaultFormData = {
+    imageUrl: "",
     name: "",
     age: 0,
     size: "",
@@ -20,16 +21,20 @@ const DogProfile = () => {
   };
 
   const [formData, setFormData] = useState(defaultFormData);
+  const [imageUrl, setImageUrl] = useState('');
+
   const navigateTo = useNavigate();
   const { id } = useParams();
 
   const getProfileDetails = async () => {
+    console.log('this is the', id);
     const { data } = await axios.get(`http://localhost:5005/api/dog/${id}`);
     // setUser(() => data);
     setFormData(() => data);
   };
 
-  const createProfile = async () => {
+  const createProfile = async (e) => {
+    console.log(formData)
     try {
       const { data } = await axios.post(
         `http://localhost:5005/api/dog`,
@@ -41,18 +46,44 @@ const DogProfile = () => {
     // setUser(data);
   };
 
-  const updateProfile = async () => {
-    try {
-      const { data } = await axios.put(
-        `http://localhost:5005/api/dog/${id}`,
-        formData
-      );
-    } catch (err) {
-      errorMessage(err);
-    }
-
-    // setUser(data);
+  const uploadImage = (file) => {
+    return axios.post("http://localhost:5005/api/dog/upload", file)
+      .then(res => res.data)
+      .catch(err => console.log(err));
   };
+
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    
+      uploadImage(uploadData)
+      .then((response) => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+       
+        // setImageUrl(() => response.fileUrl);
+        setFormData({ ...formData, imageUrl: response.fileUrl });
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
+
+  // const updateProfile = async () => {
+  //   try {
+  //     const { data } = await axios.put(
+  //       `http://localhost:5005/api/dog/${id}`,
+  //       formData
+  //     );
+  //   } catch (err) {
+  //     errorMessage(err);
+  //   }
+
+  //   setUser(data);
+  // };
 
   useEffect(() => {
     try {
@@ -62,11 +93,8 @@ const DogProfile = () => {
     }
   }, [id]);
 
-  // const uploadImage = (file) => {
-  //   return api.post("/dog", file)
-  //     .then(res => res.data)
-  //     .catch(errorHandler);
-  // };
+
+
 
   const onChange = (e) => {
     setFormData({
@@ -96,13 +124,13 @@ const DogProfile = () => {
     });
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
     try {
-      if (id) {
-        updateProfile();
-      } else {
+      // if (id) {
+      //   updateProfile();
+      // } else {
         createProfile();
-      }
+      // }
       // navigateTo("/search");
     } catch (err) {
       console.log(err);
@@ -113,6 +141,8 @@ const DogProfile = () => {
       <Space direction="vertical" size="small" style={{ display: "flex" }}>
         <Card title="Pup Profile" size="large">
           <Form onFinish={onSubmit}>
+          <input type="file" onChange={e => handleFileUpload(e)} />
+
             <label htmlFor="input-name">Name: </label>
             <Input
               allowClear
