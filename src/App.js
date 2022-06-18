@@ -15,6 +15,7 @@ import UserProfile from './pages/UserProfile';
 import DogProfile from './pages/DogProfile';
 import Signup from './pages/Signup';
 import AddDog from './pages/AddDog';
+import CreateUser from './pages/CreateUser';
 
 
 
@@ -33,13 +34,14 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route element={<ProtectedRoute />}>
-                <Route path="user" element={<UserProfile />} />
+                <Route path="user/:id" element={<UserProfile />} />
                 <Route path="dog/:id" element={<DogProfile />} />
                
               </Route>
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
               <Route path="adddog" element={<AddDog />} />
+              <Route path="createuser" element={<CreateUser />} />
             </Routes>
           </div>
       </UserProvider>

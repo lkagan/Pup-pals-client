@@ -1,23 +1,31 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import errorMessage from "../utils/errorMessage";
+import UserContext from "../contexts/UserContext";
 
 import { authAxios as axios } from "../customAxios/authAxios";
 
 import Form from "../components/UserForm";
 
 function CreateUser() {
-    const { user, setUser } = useContext(UserContext);
-
-    const defaultFormData = {
+     const defaultFormData = {
       name: "",
       age: 0,
       gender: "",
       about: "",
     };
 
+    const { user, setUser } = useContext(UserContext);
     const [formData, setFormData] = useState(defaultFormData);
     const navigateTo = useNavigate();
+
+    const getProfileDetails = async () => {
+        const { data } = await axios.get(
+          `http://localhost:5005/api/user/${user._id}`
+        );
+        setUser(() => data);
+        setFormData(() => data);
+      };
 
     const updateProfile = async () => {
         try {
@@ -26,7 +34,7 @@ function CreateUser() {
             formData
           );
           setUser(data);
-          navigateTo("/dog");
+          navigateTo("/adddog");
         } catch (err) {
           errorMessage(err);
         }
@@ -36,34 +44,43 @@ function CreateUser() {
         getProfileDetails();
       }, []);
     
-      const onChange = (e) => {
+      const changeHandler = (e) => {
         setFormData({
           ...formData,
           [e.target.name]: e.target.value,
         });
       };
     
-      const onChangeNumber = (value) => {
+      const changeNumberHandler = (value) => {
         setFormData({
           ...formData,
           age: value,
         });
       };
     
-      const onChangeSelect = (value) => {
+      const changeSelectHandler = (value) => {
         setFormData({
           ...formData,
           gender: value,
         });
       };
     
-      const onSubmit = () => {
+      const submitHandler = () => {
         updateProfile();
       };
 
   return (
-    <div>CreateUser</div>
+    <div>
+    <div>Create Hooman Profile</div>
+    <Form
+        formData={formData}
+        submitHandler={submitHandler}
+        changeHandler={changeHandler}
+        changeNumberHandler={changeNumberHandler}
+        changeSelectHandler={changeSelectHandler}
+      />
+    </div>
   )
 }
 
-export default CreateUser
+export default CreateUser;

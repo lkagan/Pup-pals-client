@@ -41,7 +41,7 @@ const DogProfile = () => {
 
   const updateProfile = async () => {
     try {
-      const { data } = await axios.push(
+      const { data } = await axios.put(
         `http://localhost:5005/api/dog/${id}`,
         formData
       );

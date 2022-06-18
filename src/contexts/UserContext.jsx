@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
 
   //Once user are authenticated, store the user data in local storage
   useEffect(() => {
+    // console.log("user object in context: ", user)
     localStorage.setItem('user', JSON.stringify(user));
   }, [user]);
 

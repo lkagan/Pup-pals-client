@@ -42,7 +42,10 @@ export default function LogIn({ authenticate }) {
         formData
       );
       setUser(() => data);
+      console.log("this is data", data);
       localStorage.setItem("token", data.token);
+      localStorage.setItem('dog', JSON.stringify(data.dog));
+
     } catch (error) {
       console.error(error);
     }

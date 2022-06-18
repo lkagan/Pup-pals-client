@@ -6,18 +6,17 @@ import UserContext from "../contexts/UserContext";
 import Form from "../components/UserForm"
 
 const UserProfile = () => {
-  const { user, setUser } = useContext(UserContext);
-  const [formData, setFormData] = useState(defaultFormData);
-  const navigateTo = useNavigate();
-  const [editToggler, setEditToggler] = useState(false);
-
-
   const defaultFormData = {
     name: "",
     age: 0,
     gender: "",
     about: "",
   };
+
+  const { user, setUser } = useContext(UserContext);
+  const [formData, setFormData] = useState(defaultFormData);
+  const navigateTo = useNavigate();
+  const [editToggler, setEditToggler] = useState(false);
 
   const getProfileDetails = async () => {
     const { data } = await axios.get(

@@ -5,11 +5,14 @@ import UserContext from '../../contexts/UserContext';
 
 import "./Navbar.css";
 import logo from "../../images/logo3.png";
-import dog from "../../images/dogpeeking2.png";
+import dogimg from "../../images/dogpeeking2.png";
 
 
 const Navbar = (props) => {
     const { user } = useContext(UserContext);
+    const dog = JSON.parse(localStorage.getItem('dog')) || null
+
+    console.log("user in navbar: ", user)
 
     const handleLogout = () => {
         localStorage.removeItem("token");
@@ -19,7 +22,7 @@ const Navbar = (props) => {
   return (
     <>
     <div className="dog">
-    <img src={dog} width="375px" alt="dog" />
+    <img src={dogimg} width="375px" alt="dog" />
     </div>
     <nav>
     <div className="logo">
@@ -28,10 +31,10 @@ const Navbar = (props) => {
    
 
       <div className="nav__authLinks">
-      {/* {console.log('in navbar',user)} */}
+      {/* {console.log('in navbar - dog: ',user)} */}
         {user ? (
           <>
-          <NavLink to={`/dog/${user.dog._id}`} className="authLink">
+          <NavLink to={`/dog/${dog._id}`} className="authLink">
             Pup Profile
             </NavLink>
             <NavLink to={`/user/${user._id}`} className="authLink">
