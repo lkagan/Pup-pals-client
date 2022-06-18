@@ -5,6 +5,8 @@ import 'antd/dist/antd.css';
 
 //components
 import NavBar from './components/Navbar/Navbar';
+import DogForm from './components/DogForm';
+import UserForm from './components/UserForm';
 
 //pages
 import Login from './pages/LogIn';
@@ -12,6 +14,8 @@ import HomePage from './pages/HomePage';
 import UserProfile from './pages/UserProfile';
 import DogProfile from './pages/DogProfile';
 import Signup from './pages/Signup';
+import AddDog from './pages/AddDog';
+
 
 
 
@@ -30,11 +34,12 @@ const App = () => {
               <Route path="/" element={<HomePage />} />
               <Route element={<ProtectedRoute />}>
                 <Route path="user" element={<UserProfile />} />
-                <Route path="dog" element={<DogProfile />} />
+                <Route path="dog/:id" element={<DogProfile />} />
                
               </Route>
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
+              <Route path="adddog" element={<AddDog />} />
             </Routes>
           </div>
       </UserProvider>

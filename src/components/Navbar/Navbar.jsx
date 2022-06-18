@@ -28,12 +28,13 @@ const Navbar = (props) => {
    
 
       <div className="nav__authLinks">
+      {/* {console.log('in navbar',user)} */}
         {user ? (
           <>
-          <NavLink to={"/dog"} className="authLink">
+          <NavLink to={`/dog/${user.dog._id}`} className="authLink">
             Pup Profile
             </NavLink>
-            <NavLink to={`/user/`} className="authLink">
+            <NavLink to={`/user/${user._id}`} className="authLink">
             
             Hooman Profile
             </NavLink>

@@ -1,15 +1,16 @@
 import { useState, useEffect, useContext } from "react";
-import UserContext from "../contexts/UserContext";
-
-import { Form, Select, Button, Input, InputNumber } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { authAxios as axios } from "../customAxios/authAxios";
 import errorMessage from "../utils/errorMessage";
-const { Option } = Select;
-const { TextArea } = Input;
+import UserContext from "../contexts/UserContext";
+import Form from "../components/UserForm"
 
 const UserProfile = () => {
   const { user, setUser } = useContext(UserContext);
+  const [formData, setFormData] = useState(defaultFormData);
+  const navigateTo = useNavigate();
+  const [editToggler, setEditToggler] = useState(false);
+
 
   const defaultFormData = {
     name: "",
@@ -17,9 +18,6 @@ const UserProfile = () => {
     gender: "",
     about: "",
   };
-
-  const [formData, setFormData] = useState(defaultFormData);
-  const navigateTo = useNavigate();
 
   const getProfileDetails = async () => {
     const { data } = await axios.get(
@@ -36,7 +34,8 @@ const UserProfile = () => {
         formData
       );
       setUser(data);
-      navigateTo("/dog");
+      navigateTo("/search");
+      setEditToggler(() => !editToggler);
     } catch (err) {
       errorMessage(err);
     }
@@ -46,85 +45,59 @@ const UserProfile = () => {
     getProfileDetails();
   }, []);
 
-  const onChange = (e) => {
+  const changeHandler = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const onChangeNumber = (value) => {
+  const changeNumberHandler = (value) => {
     setFormData({
       ...formData,
       age: value,
     });
   };
 
-  const onChangeSelect = (value) => {
+  const changeSelectHandler = (value) => {
     setFormData({
       ...formData,
       gender: value,
     });
   };
 
-  const onSubmit = () => {
+  const submitHandler = () => {
     updateProfile();
+  };
+
+  const editHandler = (e) => {
+    setEditToggler(() => !editToggler);
   };
 
   return (
     <div>
       <h1>Hooman Profile</h1>
-      <Form onFinish={onSubmit}>
-        <label htmlFor="input-name">Name: </label>
-        <Input
-          allowClear
-          placeholder="Vending machine"
-          label="Name"
-          name="name"
-          value={formData.name}
-          onChange={onChange}
-        />
-
-        <label htmlFor="input-age">Age: </label>
-        <InputNumber
-          type="number"
-          name="age"
-          value={formData.age}
-          placeholder="Age"
-          rules={[
-            {
-              type: "number",
-              min: 0,
-              max: 99,
-            },
-          ]}
-          onChange={onChangeNumber}
-        />
-        <label htmlFor="input-gender">Gender: </label>
-        <Select
-          style={{
-            width: 120,
-          }}
-          name="gender"
-          value={formData.gender}
-          allowClear
-          onChange={onChangeSelect}
-        >
-          <Option value="female">Female</Option>
-          <Option value="male">Male</Option>
-        </Select>
-        <label htmlFor="input-text">About my hooman: </label>
-        <TextArea
-          allowClear
-          showCount
-          maxLength={100}
-          name="about"
-          value={formData.about}
-          placeholder="My hooman is the best..."
-          onChange={onChange}
-        />
-        <Button htmlType="submit">Submit</Button>
-      </Form>
+      {user && !editToggler && (
+        <div key={user._id}>
+          <p>{user.name}</p>
+          <p>{user.age}</p>
+          <p>{user.gender}</p>
+          <p>{user.about}</p>
+          <button onClick={editHandler}>Edit</button>
+        </div>
+      )}
+      {editToggler && (
+        <div>
+          <Form
+            formData={formData}
+            submitHandler={submitHandler}
+            changeHandler={changeHandler}
+            changeNumberHandler={changeNumberHandler}
+            changeSelectHandler={changeSelectHandler}
+          />
+          <button onClick={editHandler}>Cancel</button>
+        </div>
+      )}
     </div>
   );
 };
