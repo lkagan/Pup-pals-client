@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import errorMessage from "../utils/errorMessage";
+import UserContext from "../contexts/UserContext";
 
 import { authAxios as axios } from "../customAxios/authAxios";
 
@@ -18,6 +19,7 @@ const AddDog = () => {
   };
   const [formData, setFormData] = useState(defaultFormData);
   const [imageUrl, setImageUrl] = useState("");
+  const { user, setUser } = useContext(UserContext);
 
   const navigateTo = useNavigate();
 
@@ -26,7 +28,7 @@ const AddDog = () => {
     try {
       const { data } = await axios.post(
         `http://localhost:5005/api/dog`,
-        formData
+        {formData, userId: user._id}
       );
     } catch (err) {
       errorMessage(err);
@@ -51,7 +53,7 @@ const AddDog = () => {
 
     uploadImage(uploadData)
       .then((response) => {
-        // console.log("response is: ", response);
+        console.log("response is: ", response.fileUrl);
         // response carries "fileUrl" which we can use to update the state
 
         // setImageUrl(() => response.fileUrl);
@@ -92,7 +94,7 @@ const AddDog = () => {
     try {
       createProfile();
 
-      // navigateTo("/search");
+      navigateTo("/search");
     } catch (err) {
       console.log(err);
     }

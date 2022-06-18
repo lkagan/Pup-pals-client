@@ -32,7 +32,7 @@ const Navbar = (props) => {
 
       <div className="nav__authLinks">
       {/* {console.log('in navbar - dog: ',user)} */}
-        {user ? (
+        {user && dog ? (
           <>
           <NavLink to={`/dog/${dog._id}`} className="authLink">
             Pup Profile

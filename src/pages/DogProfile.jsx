@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { authAxios as axios } from "../customAxios/authAxios";
 import errorMessage from "../utils/errorMessage";
 import Form from "../components/DogForm";
+import UserContext from "../contexts/UserContext";
+
 
 const DogProfile = () => {
   const defaultFormData = {
@@ -21,6 +23,8 @@ const DogProfile = () => {
   const { id } = useParams();
   const [dog, setDog] = useState(null);
   const [editToggler, setEditToggler] = useState(false);
+  const { user, setUser } = useContext(UserContext);
+
 
   
 
