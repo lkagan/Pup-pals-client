@@ -49,7 +49,7 @@ export default function LogIn({ authenticate }) {
     } catch (error) {
       console.error(error);
     }
-    navigateTo("/");
+    navigateTo("/search");
   };
 
   return (
