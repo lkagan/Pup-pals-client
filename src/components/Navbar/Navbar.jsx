@@ -34,11 +34,12 @@ const Navbar = (props) => {
 
       <div className="nav__authLinks">
       {/* {console.log('in navbar - dog: ',user)} */}
-        {user && dog ? (
+        {user ? (
           <>
-          <NavLink to={`/dog/${dog._id}`} className="authLink">
+          {dog && <NavLink to={`/dog/${dog._id}`} className="authLink">
             Pup Profile
             </NavLink>
+          }
             <NavLink to={`/user/${user._id}`} className="authLink">
             
             Hooman Profile

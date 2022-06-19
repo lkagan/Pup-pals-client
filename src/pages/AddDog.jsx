@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import errorMessage from "../utils/errorMessage";
 import UserContext from "../contexts/UserContext";
+import DogContext from "../contexts/DogContext";
 
 import { authAxios as axios } from "../customAxios/authAxios";
 
@@ -20,6 +21,8 @@ const AddDog = () => {
   const [formData, setFormData] = useState(defaultFormData);
   const [imageUrl, setImageUrl] = useState("");
   const { user, setUser } = useContext(UserContext);
+  const { dog, setDog } = useContext(DogContext);
+
 
   const navigateTo = useNavigate();
 
@@ -30,7 +33,7 @@ const AddDog = () => {
         `http://localhost:5005/api/dog`,
         {formData, userId: user._id}
       );
-      localStorage.setItem("dog", JSON.stringify(data));
+      setDog(data.dog);
     } catch (err) {
       errorMessage(err);
     }
