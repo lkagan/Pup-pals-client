@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
+import DogContext from '../../contexts/DogContext';
 
 import "./Navbar.css";
 import logo from "../../images/logo3.png";
@@ -10,7 +11,7 @@ import dogimg from "../../images/dogpeeking2.png";
 
 const Navbar = (props) => {
     const { user } = useContext(UserContext);
-    const dog = JSON.parse(localStorage.getItem('dog')) || null
+    const { dog } = useContext(DogContext);
 
     console.log("user in navbar: ", user)
 

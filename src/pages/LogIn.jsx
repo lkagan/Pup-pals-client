@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./Signup";
 import axios from "axios";
 import UserContext from '../contexts/UserContext';
+import DogContext from '../contexts/DogContext';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 
@@ -10,6 +11,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 
 export default function LogIn({ authenticate }) {
   const { setUser } = useContext(UserContext);
+  const { setDog } = useContext(DogContext);
 
   const navigateTo = useNavigate();
 
@@ -44,8 +46,7 @@ export default function LogIn({ authenticate }) {
       setUser(() => data);
       console.log("this is data", data);
       localStorage.setItem("token", data.token);
-      localStorage.setItem('dog', JSON.stringify(data.dog));
-
+      setDog(data.dog);
     } catch (error) {
       console.error(error);
     }

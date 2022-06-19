@@ -18,6 +18,7 @@ import CreateUser from "./pages/CreateUser";
 
 //providers
 import { UserProvider } from "./contexts/UserContext";
+import { DogProvider } from "./contexts/DogContext";
 import ProtectedRoute from "./routeGuard/ProtectedRoute";
 
 const App = () => {
@@ -25,20 +26,22 @@ const App = () => {
     <BrowserRouter>
       {/* Wrapping our entire App here, so that we can use context values anywhere (components, pages) */}
       <UserProvider>
-        <div className="App">
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="user/:id" element={<UserProfile />} />
-              <Route path="dog/:id" element={<DogProfile />} />
-              <Route path="adddog" element={<AddDog />} />
-            <Route path="createuser" element={<CreateUser />} />
-            </Route>
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-          </Routes>
-        </div>
+        <DogProvider>
+          <div className="App">
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="user/:id" element={<UserProfile />} />
+                <Route path="dog/:id" element={<DogProfile />} />
+                <Route path="adddog" element={<AddDog />} />
+              <Route path="createuser" element={<CreateUser />} />
+              </Route>
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+            </Routes>
+          </div>
+        </DogProvider>
       </UserProvider>
     </BrowserRouter>
   );
