@@ -17,6 +17,7 @@ const Navbar = (props) => {
     const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
+        localStorage.removeItem("dog");
         window.location.reload();
     }
   return (

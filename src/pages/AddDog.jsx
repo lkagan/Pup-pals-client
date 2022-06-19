@@ -30,6 +30,7 @@ const AddDog = () => {
         `http://localhost:5005/api/dog`,
         {formData, userId: user._id}
       );
+      localStorage.setItem("dog", JSON.stringify(data));
     } catch (err) {
       errorMessage(err);
     }
