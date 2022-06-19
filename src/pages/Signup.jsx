@@ -30,6 +30,7 @@ export default function Signup({ authenticate }) {
         formData
       );
       setUser(() => data);
+      localStorage.setItem("token", data.token);
       navigate("/createuser");
       console.log(data);
     } catch (error) {
