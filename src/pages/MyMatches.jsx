@@ -21,7 +21,10 @@ function MyMatches() {
     <div>MyMatches</div>
     <ul>
       { matches?.map(match => (
-        <li key={match._id}>{match.name}</li>
+        <li key={match._id}>
+          <img src={match.imageUrl} alt="dog" width={200}/>
+          {match.name}
+          </li>
       ))}
     </ul>
     </>
