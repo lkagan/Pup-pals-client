@@ -44,6 +44,14 @@ const Navbar = (props) => {
             
             Hooman Profile
             </NavLink>
+
+            <NavLink to="/mymatches" className="authLink">
+            My Matches
+            </NavLink>
+
+            <NavLink to="/search" className="authLink">
+            Search
+            </NavLink>
             
             <button className="nav-logoutbtn" onClick={handleLogout}>
               Logout
