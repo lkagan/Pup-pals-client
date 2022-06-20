@@ -33,7 +33,7 @@ const AddDog = () => {
         `http://localhost:5005/api/dog`,
         {formData, userId: user._id}
       );
-      setDog(data.dog);
+      setDog(data);
     } catch (err) {
       errorMessage(err);
     }

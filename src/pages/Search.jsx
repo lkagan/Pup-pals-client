@@ -4,3 +4,12 @@
 // liked dogs get saved to the dog model and DB and removed from array
 // disliked dogs get removed from the array of dogs from DB
 // if both users like each other their profiles get saved in matches
+import React from 'react'
+
+function Search() {
+  return (
+    <div>Search</div>
+  )
+}
+
+export default Search

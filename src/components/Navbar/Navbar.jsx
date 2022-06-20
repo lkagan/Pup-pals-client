@@ -51,6 +51,9 @@ const Navbar = (props) => {
           </>
         ) : (
           <>
+            <NavLink to={"/signup"} className="authLink">
+              Sign Up
+            </NavLink>
             <NavLink to={"/login"} className="authLink">
               Log In
             </NavLink>

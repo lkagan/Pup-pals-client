@@ -142,7 +142,7 @@ const DogProfile = () => {
       <h1>Pup Profile</h1>
       {dog && !editToggler && (
         <div key={dog._id}>
-          <img src={dog.imageUrl} alt="dog" />
+          <img src={dog.imageUrl} alt="dog" width="200"/>
           <p>{dog.name}</p>
           <p>{dog.age}</p>
           <p>{dog.size}</p>

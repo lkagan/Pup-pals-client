@@ -15,6 +15,8 @@ import DogProfile from "./pages/DogProfile";
 import Signup from "./pages/Signup";
 import AddDog from "./pages/AddDog";
 import CreateUser from "./pages/CreateUser";
+import Search from "./pages/Search";
+import MyMatches from "./pages/MyMatches";
 
 //providers
 import { UserProvider } from "./contexts/UserContext";
@@ -36,6 +38,8 @@ const App = () => {
                 <Route path="dog/:id" element={<DogProfile />} />
                 <Route path="adddog" element={<AddDog />} />
               <Route path="createuser" element={<CreateUser />} />
+              <Route path="search" element={<Search />} />
+              <Route path="mymatches" element={<MyMatches />} />
               </Route>
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
