@@ -41,14 +41,14 @@ export default function Signup({ authenticate }) {
 
   return (
     <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={submitFormData} className="auth__form">
+      <form  id="form" className= "card row" onSubmit={submitFormData}>
+      <h1 id="headerTitle">Sign Up</h1>
         <label htmlFor="input-email">Email</label>
         <input
           id="input-email"
           type="text"
           name="email"
-          placeholder="Email"
+          placeholder="Enter your email"
           value={email}
           onChange={handleInputChange}
           required
@@ -59,7 +59,7 @@ export default function Signup({ authenticate }) {
           id="input-password"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Enter your password"
           value={password}
           onChange={handleInputChange}
           required
@@ -73,7 +73,7 @@ export default function Signup({ authenticate }) {
           </div>
         )}
 
-        <button className="button__submit" type="submit">
+        <button id="button" className="row" type="submit">
           Submit
         </button>
       </form>

@@ -2,12 +2,9 @@ import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Signup";
 import axios from "axios";
-import UserContext from '../contexts/UserContext';
-import DogContext from '../contexts/DogContext';
-import { Button, Checkbox, Form, Input } from 'antd';
-
-
-
+import UserContext from "../contexts/UserContext";
+import DogContext from "../contexts/DogContext";
+import { Button, Checkbox, Form, Input } from "antd";
 
 export default function LogIn({ authenticate }) {
   const { setUser } = useContext(UserContext);
@@ -29,11 +26,11 @@ export default function LogIn({ authenticate }) {
   }
 
   const onFinish = (values) => {
-    console.log('Success:', values);
+    console.log("Success:", values);
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    console.log("Failed:", errorInfo);
   };
 
   const submitFormData = async (e) => {
@@ -55,25 +52,25 @@ export default function LogIn({ authenticate }) {
 
   return (
     <div>
-      <h1>Log In</h1>
-      <form onSubmit={submitFormData} className="signup__form">
-        <label htmlFor="input-email">Email</label>
-        <input
-          id="input-email"
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleInputChange}
-          required
-        />
+      <form id="form" className="card row" onSubmit={submitFormData}>
+        <h1 id="headerTitle">Login</h1>
+          <label htmlFor="input-email">Email</label>
+          <input
+            id="input-email"
+            type="text"
+            name="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={handleInputChange}
+            required
+          />
 
         <label htmlFor="input-password">Password</label>
         <input
           id="input-password"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Enter your password"
           value={password}
           onChange={handleInputChange}
           required
@@ -87,95 +84,13 @@ export default function LogIn({ authenticate }) {
           </div>
         )}
 
-        <button className="button__submit" type="submit">
+        <button id="button" className="row" type="submit">
           Submit
         </button>
+        <p className="link">
+          Don't have an account? No problem, <Link to={"/signup"}>Signup!</Link>
+        </p>
       </form>
-      <Link to={"/signup"} className="authLink">
-              Signup
-            </Link>
     </div>
-    // <div>
-    // <h2>Log In</h2>
-    // <Form
-    //   name="basic"
-    //   labelCol={{
-    //     span: 8,
-    //   }}
-    //   wrapperCol={{
-    //     span: 16,
-    //   }}
-    //   initialValues={{
-    //     remember: true,
-    //   }}
-    //   onSubmit={submitFormData}
-    //   onFinish={onFinish}
-    //   onFinishFailed={onFinishFailed}
-    //   autoComplete="off"
-    // >
-    //   <Form.Item
-      
-    //     label="Email"
-    //     type="email"
-    //       name="email"
-    //       placeholder="Email"
-    //       value={email}
-    //       onChange={handleInputChange}
-    //     rules={[
-    //       {
-    //         required: true,
-    //         message: 'Please input your email!',
-    //       },
-    //     ]}
-    //   >
-    //     <Input />
-    //   </Form.Item>
-
-    //   <Form.Item
-    //     label="Password"
-    //     type="password"
-    //       name="password"
-    //       placeholder="Password"
-    //       value={password}
-    //       onChange={handleInputChange}
-    //     rules={[
-    //       {
-    //         required: true,
-    //         message: 'Please input your password!',
-    //       },
-    //     ]}
-    //   >
-    //     <Input.Password />
-    //   </Form.Item>
-
-    //   <Form.Item
-    //     name="remember"
-    //     valuePropName="checked"
-    //     wrapperCol={{
-    //       offset: 8,
-    //       span: 16,
-    //     }}
-    //   >
-    //     <Checkbox>Remember me</Checkbox>
-    //   </Form.Item>
-
-    //   <Form.Item
-    //     wrapperCol={{
-    //       offset: 8,
-    //       span: 16,
-    //     }}
-    //   >
-    //     <Button type="primary" htmlType="submit">
-    //       Submit
-    //     </Button>
-    //   </Form.Item>
-    // </Form>
-    // </div>
   );
 }
-
-
-
-
- 
-    

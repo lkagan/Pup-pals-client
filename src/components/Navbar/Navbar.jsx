@@ -5,7 +5,7 @@ import UserContext from '../../contexts/UserContext';
 import DogContext from '../../contexts/DogContext';
 
 import "./Navbar.css";
-import logo from "../../images/logo3.png";
+import logo from "../../images/logo2.png";
 import dogimg from "../../images/dogpeeking2.png";
 
 
@@ -23,9 +23,9 @@ const Navbar = (props) => {
     }
   return (
     <>
-    <div className="dog">
+    {/* <div className="dog">
     <img src={dogimg} width="375px" alt="dog" />
-    </div>
+    </div> */}
     <nav>
     <div className="logo">
     <img src={logo} width="85px" alt="logo"/>
