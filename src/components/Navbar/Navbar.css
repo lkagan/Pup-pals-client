@@ -59,7 +59,7 @@ nav {
     background-color: #5595ff;
     box-shadow: 0 0 5px 0 aliceblue;
     border: none;
-    border-radius: 2px;
+    border-radius: 20px;
     cursor: pointer;
     color: #e3f2ff;
     transition: all 0.2s ease-in-out;
@@ -71,4 +71,46 @@ nav {
     transform: scale(1.05);
     background-color: #d13e3e;
   }
+
+  .button{
+    background: transparent;
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    font-family: 'open sans', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 0 5px 0 whitesmoke;
+  }
+  .button:hover{
+    background: transparent;
+    text-decoration-color: #ffffff;
+  }
+  .button:before, .button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: white;
+    transition:400ms ease all;
+  }
+  .button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .button:hover:before,button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
   

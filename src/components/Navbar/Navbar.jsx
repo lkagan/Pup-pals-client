@@ -27,9 +27,9 @@ const Navbar = (props) => {
     <img src={dogimg} width="375px" alt="dog" />
     </div> */}
     <nav>
-    <div className="logo">
+    <NavLink to="/"><div className="logo">
     <img src={logo} width="85px" alt="logo"/>
-    </div>
+    </div></NavLink>
    
 
       <div className="nav__authLinks">
@@ -59,12 +59,14 @@ const Navbar = (props) => {
           </>
         ) : (
           <>
+            <button className="button">
             <NavLink to={"/signup"} className="authLink">
               Sign Up
             </NavLink>
-            <NavLink to={"/login"} className="authLink">
+            </button>
+            {/* <NavLink to={"/login"} className="authLink">
               Log In
-            </NavLink>
+            </NavLink> */}
           </>
         )}
       </div>

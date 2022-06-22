@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./auth.css";
 import  axios from "axios";
 import UserContext from '../contexts/UserContext';
@@ -42,7 +42,7 @@ export default function Signup({ authenticate }) {
   return (
     <div>
       <form  id="form" className= "card row" onSubmit={submitFormData}>
-      <h1 id="headerTitle">Sign Up</h1>
+      <h1 id="headerTitle">Signup</h1>
         <label htmlFor="input-email">Email</label>
         <input
           id="input-email"
@@ -76,6 +76,9 @@ export default function Signup({ authenticate }) {
         <button id="button" className="row" type="submit">
           Submit
         </button>
+        <p className="link">
+          Already have an account? Awesome, <Link to={"/login"}>Login!</Link>
+        </p>
       </form>
     </div>
   );

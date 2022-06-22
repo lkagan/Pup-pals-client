@@ -71,7 +71,6 @@ function CreateUser() {
 
   return (
     <div>
-    <div>Create Hooman Profile</div>
     <Form
         formData={formData}
         submitHandler={submitHandler}

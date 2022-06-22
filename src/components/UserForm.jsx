@@ -7,20 +7,18 @@ const UserForm = ({formData, submitHandler, changeHandler, changeNumberHandler, 
   console.log(formData)
     return (
         <div>
-          <h1>Hooman Profile</h1>
-          <Form onFinish={submitHandler}>
+        <form id="form" className="card row" onSubmit={submitHandler}>
             <label htmlFor="input-name">Name: </label>
-            <Input
-              allowClear
+            <input
+              type="text"
               placeholder="Vending machine"
-              label="Name"
               name="name"
               value={formData.name}
               onChange={changeHandler}
             />
     
             <label htmlFor="input-age">Age: </label>
-            <InputNumber
+            <input
               type="number"
               name="age"
               value={formData.age}
@@ -32,12 +30,12 @@ const UserForm = ({formData, submitHandler, changeHandler, changeNumberHandler, 
                   max: 99,
                 },
               ]}
-              onChange={changeNumberHandler}
+              onChange={changeHandler}
             />
             <label htmlFor="input-gender">Gender: </label>
             <Select
               style={{
-                width: 120,
+                width: 300,
               }}
               name="gender"
               value={formData.gender}
@@ -49,6 +47,9 @@ const UserForm = ({formData, submitHandler, changeHandler, changeNumberHandler, 
             </Select>
             <label htmlFor="input-text">About my hooman: </label>
             <TextArea
+             style={{
+            width: 300,
+          }}
               allowClear
               showCount
               maxLength={100}
@@ -57,8 +58,8 @@ const UserForm = ({formData, submitHandler, changeHandler, changeNumberHandler, 
               placeholder="My hooman is the best..."
               onChange={changeHandler}
             />
-            <Button htmlType="submit">Submit</Button>
-          </Form>
+            <button id="button" className="row" htmlType="submit">Submit</button>
+          </form>
         </div>
       );
 }
