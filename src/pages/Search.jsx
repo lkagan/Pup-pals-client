@@ -20,17 +20,17 @@ function Search() {
   return (
     <>
     <div>Search</div>
-    <ul>
+    <div class="card content-small">
         <img src={dog.imageUrl} alt="dog" width={200}/>
-        <li>{dog.name}</li>
-        <li>{dog.age}</li>
-        <li>{dog.gender}</li>
-        <li>{dog.size}</li>
-        <li>{dog.breed}</li>
-        <li>{dog.about}</li>
-
-      
-    </ul>
+        <h3>{dog.name}</h3>
+        <div>
+            {dog.age} year(s) old<br/>
+            {dog.gender} <br/>
+            {dog.size} <br />
+            {dog.breed} <br />
+            {dog.about} <br />
+        </div>
+    </div>
     </>
   )
 }
