@@ -8,31 +8,65 @@ import React, { useEffect, useState } from 'react';
 import { authAxios } from '../customAxios/authAxios';
 
 function Search() {
-  const [dog, setDog] = useState({});
+    const [dog, setDog] = useState({});
 
-  useEffect(() => { 
-    authAxios.get('http://localhost:5005/api/matches/find')
-      .then(response => {
-        setDog(response.data)
-      })
-  }, []);
+    useEffect(() => {
+        getNewPup();
+    }, []);
 
-  return (
-    <>
-    <h2>Search</h2>
-    <div class="card content-small">
-        <img src={dog.imageUrl} alt="dog" width={200}/>
-        <h3>{dog.name}</h3>
-        <div>
-            {dog.age} year(s) old<br/>
-            {dog.gender} <br/>
-            {dog.size} <br />
-            {dog.breed} <br />
-            {dog.about} <br />
-        </div>
-    </div>
-    </>
-  )
+    const getNewPup = () => {
+        authAxios.get('http://localhost:5005/api/matches/find')
+            .then(response => {
+                setDog(response.data)
+            })
+    }
+
+
+    const postView = status => {
+        authAxios.post('http://localhost:5005/api/matches/like', {
+            status: status,
+            dog_id: dog._id
+        })
+            .then(response => getNewPup())
+            .catch(e => console.log(e));
+    }
+
+    return (
+        <>
+            <h2>Search</h2>
+            <div className="card content-small">
+                <img
+                    src={ dog.imageUrl }
+                    alt="dog"
+                    width={ 200 }
+                />
+                <h3>{ dog.name }</h3>
+                <div>
+                    { dog.age } year(s) old<br/>
+                    { dog.gender } <br/>
+                    { dog.size } <br/>
+                    { dog.breed } <br/>
+                    { dog.about } <br/>
+                </div>
+                <div className="btn-group">
+                    <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={ () => postView('liked') }
+                    >
+                        Good { dog.gender === 'male' ? 'boy' : 'girl' }
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={ () => postView('disliked') }
+                    >
+                        Bad { dog.gender === 'male' ? 'boy' : 'girl' }
+                    </button>
+                </div>
+            </div>
+        </>
+    )
 }
 
 export default Search
