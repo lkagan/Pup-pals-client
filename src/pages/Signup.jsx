@@ -73,7 +73,7 @@ export default function Signup({ authenticate }) {
           </div>
         )}
 
-        <button id="button" className="row" type="submit">
+        <button className="btn btn-primary" type="submit">
           Submit
         </button>
         <p className="link">

@@ -91,24 +91,41 @@ html{
   color: rgba(187,187,187,0.9);
 }
 
-.row button{
-  border-radius: 40px;
-  width: 30%;
-  height: 10px;
-  font-size: 1.3rem;
-  color: white;
-  font-weight: 700;
-  background: rgb(182,240,176);
-background: linear-gradient(0deg, rgba(182,240,176,0.8197872899159664) 0%, rgba(191,225,249,0.8702074579831933) 100%);
-  border: 0px;
+.btn {
   cursor: pointer;
-  /* transition: opacity 0.25s ease-out; */
+  font-size: 1.3rem;
+  font-weight: normal;
+  background-color: transparent;
+  border-width: 3px;
+  border-radius: .4rem;
+  border-style: solid;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
 }
 
-.row button:hover{
-  opacity: 0.8;
+.btn-primary {
+  border-color: #8db989;
+  color: #8db989;
 }
 
-#button{
-  padding-bottom: 3rem;
+.btn-primary:hover {
+  background-color: #8db989;
+  border-color: #8db989;
+  color: #fff;
+}
+
+.btn-secondary {
+  border-color: #ccc;
+  color: #ccc;
+}
+
+.btn-secondary:hover {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #fff;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }

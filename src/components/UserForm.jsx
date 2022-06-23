@@ -58,8 +58,10 @@ const UserForm = ({formData, submitHandler, changeHandler, changeNumberHandler, 
               placeholder="My hooman is the best..."
               onChange={changeHandler}
             />
-            <button id="button" className="row" htmlType="submit">Submit</button>
-            {cancelHandler && <button htmlType="button" className="row" onClick={ cancelHandler }>Cancel</button>}
+            <div className="btn-group">
+                <button id="button" className="btn btn-primary" htmlType="submit">Submit</button>
+                {cancelHandler && <button htmlType="button" className="btn btn-secondary" onClick={ cancelHandler }>Cancel</button>}
+            </div>
           </form>
         </div>
       );

@@ -149,8 +149,10 @@ const DogProfile = () => {
           <p>{dog.gender}</p>
           <p>{dog.breed}</p>
           <p>{dog.about}</p>
-          <button onClick={editHandler}>Edit</button>
-          <button onClick={deleteHandler}>Delete</button>
+          <div class="btn-group">
+          <button className="btn btn-primary" onClick={editHandler}>Edit</button>
+          <button className="btn btn-secondary" onClick={deleteHandler}>Delete</button>
+        </div>
         </div>
       )}
       {editToggler && (
