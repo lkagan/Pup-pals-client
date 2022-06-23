@@ -162,8 +162,8 @@ const DogProfile = () => {
             changeSelectHandler={changeSelectHandler}
             changeSizeHandler={changeSizeHandler}
             handleFileUpload={handleFileUpload}
+            cancelHandler={editHandler}
           />
-          <button onClick={editHandler}>Cancel</button>
         </div>
       )}
     </div>

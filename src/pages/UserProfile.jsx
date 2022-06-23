@@ -93,8 +93,8 @@ const UserProfile = () => {
             changeHandler={changeHandler}
             changeNumberHandler={changeNumberHandler}
             changeSelectHandler={changeSelectHandler}
+            cancelHandler={editHandler}
           />
-          <button onClick={editHandler}>Cancel</button>
         </div>
       )}
     </div>

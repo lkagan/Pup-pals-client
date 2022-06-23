@@ -10,6 +10,7 @@ const DogForm = ({
   changeSizeHandler,
   changeSelectHandler,
   handleFileUpload,
+  cancelHandler,
 }) => {
   return (
     <div>
@@ -92,6 +93,13 @@ const DogForm = ({
         <label htmlFor="input-image">Profile Picture: </label>
         <input type="file" onChange={(e) => handleFileUpload(e)} />
         <button id="button" className="row" htmlType="submit">Submit</button>
+        {cancelHandler && <button
+          className="row"
+          onClick={cancelHandler}
+          htmlType="button"
+        >
+          Cancel
+        </button>}
       </form>
     </div>
   );

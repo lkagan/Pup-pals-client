@@ -3,7 +3,7 @@ import { Form, Select, Button, Input, InputNumber } from "antd";
 const { Option } = Select;
 const { TextArea } = Input;
 
-const UserForm = ({formData, submitHandler, changeHandler, changeNumberHandler, changeSelectHandler }) => {
+const UserForm = ({formData, submitHandler, changeHandler, changeNumberHandler, changeSelectHandler, cancelHandler }) => {
   console.log(formData)
     return (
         <div>
@@ -59,6 +59,7 @@ const UserForm = ({formData, submitHandler, changeHandler, changeNumberHandler, 
               onChange={changeHandler}
             />
             <button id="button" className="row" htmlType="submit">Submit</button>
+            {cancelHandler && <button htmlType="button" className="row" onClick={ cancelHandler }>Cancel</button>}
           </form>
         </div>
       );

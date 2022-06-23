@@ -65,7 +65,8 @@ function CreateUser() {
         });
       };
     
-      const submitHandler = () => {
+      const submitHandler = (e) => {
+        e.preventDefault();
         updateProfile();
       };
 

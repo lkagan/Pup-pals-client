@@ -42,7 +42,7 @@ export default function Signup({ authenticate }) {
   return (
     <div>
       <form  id="form" className= "card row" onSubmit={submitFormData}>
-      <h1 id="headerTitle">Signup</h1>
+      <h1 id="headerTitle">Sign-up</h1>
         <label htmlFor="input-email">Email</label>
         <input
           id="input-email"

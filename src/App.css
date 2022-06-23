@@ -1,3 +1,7 @@
+body {
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -13,27 +17,34 @@
   background-size: cover;
 }
 
-.hp {
-  display: flex;
-  justify-content: center;
-  row-gap: 10px;
-  column-gap: 20px;
 
+.App img {
+  z-index: 3;
 }
 
-.about {
-  display: flex;
-  background-color: #FFFFFF;
-  border-radius: 25px;
-  opacity: 0.8;
-  box-shadow: #0000002e 1px 3px 4px 2px;
-  width: 50%;
+.title {
+  font: 'open sans', sans-serif;
+  font-weight: bold;
+  z-index: 2;
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.653);
 }
 
 .card {
-  background-color: #FFFFFF;
+  background-color: rgba(255,255,255,0.5);
   border-radius: 25px;
-  opacity: 0.8;
   box-shadow: #0000002e 1px 3px 4px 2px;
+}
+
+.content-medium {
+  width: 900px;
+  margin: 3em auto 0;
+  max-width: 90%;
+}
+
+.card.content-medium.home {
+  padding: 2em;
+  display: flex;
+  gap: 5em;
 }
 

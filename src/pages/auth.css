@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
 
 body{
-  background-image: url('../images/dogpark4.png');
   font-family: "work sans";
-  background-repeat: no-repeat;
+  background-image: url('../images/dogpark4.png');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 html{
@@ -14,9 +14,7 @@ html{
 #form{
   max-width: 500px;
   min-width: 300px;
-  max-height: 700px;
   width: 30%;
-  height: 60%;
   margin: 50px auto;
   background-color: #FFFFFF;
   border-radius: 25px;
@@ -100,8 +98,8 @@ html{
   font-size: 1.3rem;
   color: white;
   font-weight: 700;
-  background: rgb(238,231,174);
-  background: linear-gradient(90deg, rgba(238,231,174) 0%, rgba(148,233,208));
+  background: rgb(182,240,176);
+background: linear-gradient(0deg, rgba(182,240,176,0.8197872899159664) 0%, rgba(191,225,249,0.8702074579831933) 100%);
   border: 0px;
   cursor: pointer;
   /* transition: opacity 0.25s ease-out; */

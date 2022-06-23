@@ -53,7 +53,7 @@ export default function LogIn({ authenticate }) {
   return (
     <div>
       <form id="form" className="card row" onSubmit={submitFormData}>
-        <h1 id="headerTitle">Login</h1>
+        <h1 id="headerTitle">Log In</h1>
           <label htmlFor="input-email">Email</label>
           <input
             id="input-email"
