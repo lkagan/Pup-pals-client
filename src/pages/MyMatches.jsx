@@ -18,15 +18,15 @@ function MyMatches() {
 
   return (
     <>
-    <div>MyMatches</div>
-    <ul>
-      { matches?.map(match => (
-        <li key={match._id}>
-          <img className="img" src={match.imageUrl} alt="dog" width={200}/>
-          {match.name}
-          </li>
-      ))}
-    </ul>
+    <h2>My Matches</h2>
+      <div className="content-large matches-container">
+        { matches?.map(match => (
+          <div className="card content-small" key={match._id}>
+            <img className="img" src={match.imageUrl} alt="dog" width={200}/>
+            <h3>{match.name}</h3>
+            </div>
+        ))}
+        </div>
     </>
   )
 }

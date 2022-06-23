@@ -5,6 +5,7 @@ body{
   background-image: url('../images/dogpark4.png');
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 html{

@@ -31,9 +31,21 @@ body {
 }
 
 .card {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.75);
   border-radius: 25px;
   box-shadow: #0000002e 1px 3px 4px 2px;
+  padding: 2em;
+}
+
+.matches-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.content-large {
+  width: 1200px;
+  margin: 3em auto 0;
+  max-width: 90%;
 }
 
 .content-medium {
@@ -42,8 +54,13 @@ body {
   max-width: 90%;
 }
 
+.content-small{
+  width: 500px;
+  margin: 3em auto 0;
+  max-width: 90%;
+}
+
 .card.content-medium.home {
-  padding: 2em;
   display: flex;
   gap: 5em;
 }

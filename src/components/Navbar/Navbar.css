@@ -37,13 +37,10 @@ nav {
     color: #e4f9ff;
     text-decoration: none;
   }
-    .nav__authLinks button {
-      text-shadow: 1px 1px 0px #0000003b;
-    }
   
-  .authLink {
-    text-shadow: 1px 1px 0px #0000003b;
+  .authLink,  .nav__authLinks button {
     color: #ffffff;
+    color: rgb(225,135,131);
     text-decoration: none;
     transition: color 0.2s ease-in-out;
     font: 'open sans', sans-serif;
@@ -56,8 +53,9 @@ nav {
   }
   
   .authLink:hover {
-    color: #ffffff;
-    border-bottom: 0.5px solid #ffffff;
+    color: #fff;
+    border-bottom: 0.5px solid #fff;
+
     padding-bottom: 16px
   }
   

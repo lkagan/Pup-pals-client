@@ -77,7 +77,7 @@ const UserProfile = () => {
     <div>
       <h1>Hooman Profile</h1>
       {user && !editToggler && (
-        <div key={user._id}>
+        <div className="card content-small" key={user._id}>
           <p>{user.name}</p>
           <p>{user.age}</p>
           <p>{user.gender}</p>
