@@ -19,7 +19,7 @@ function Search() {
 
   return (
     <>
-    <div>Search</div>
+    <h2>Search</h2>
     <div class="card content-small">
         <img src={dog.imageUrl} alt="dog" width={200}/>
         <h3>{dog.name}</h3>

@@ -2,6 +2,15 @@ body {
   height: 100%;
 }
 
+#root h2 {
+  margin-top: 2em;
+  padding: 0 1em;
+  color: #666;
+  border-top: solid 2px #666;
+  border-bottom: solid 2px #666;
+  display: inline-block;
+  text-transform: uppercase;
+}
 .App {
   text-align: center;
 }
@@ -64,4 +73,3 @@ body {
   display: flex;
   gap: 5em;
 }
-

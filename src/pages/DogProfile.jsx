@@ -138,8 +138,9 @@ const DogProfile = () => {
   };
 
   return (
-    <div>
-      {dog && !editToggler && (
+  <div>
+    <h2>Pup Profile</h2>
+    {dog && !editToggler && (
         <div className="card content-small" key={dog._id}>
           <img className="img" src={dog.imageUrl} alt="dog" width="200"/>
           <p>{dog.name}</p>

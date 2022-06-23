@@ -15,7 +15,6 @@ const DogForm = ({
   return (
     <div>
       <form id="form" className="card row" onSubmit={submitHandler}>
-      <h1>Pup Profile</h1>
         <label htmlFor="input-name">Name: </label>
         <input
           type="text"
