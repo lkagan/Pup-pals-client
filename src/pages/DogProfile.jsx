@@ -29,7 +29,7 @@ const DogProfile = () => {
   
 
   const getProfileDetails = async () => {
-    console.log("this is the", id);
+    // console.log("this is the", id);
     const { data } = await axios.get(`http://localhost:5005/api/dog/${id}`);
     setDog(() => data);
     setFormData(() => data);

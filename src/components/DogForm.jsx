@@ -92,11 +92,11 @@ const DogForm = ({
         <label htmlFor="input-image">Profile Picture: </label>
         <input type="file" onChange={(e) => handleFileUpload(e)} />
         <div className="btn-group">
-        <button className="btn btn-primary" htmlType="submit">Submit</button>
+        <button className="btn btn-primary" type="submit">Submit</button>
         {cancelHandler && <button
           className="btn btn-secondary"
           onClick={cancelHandler}
-          htmlType="button"
+          type="button"
         >
           Cancel
         </button>}
