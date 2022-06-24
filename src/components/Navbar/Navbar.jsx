@@ -13,7 +13,7 @@ const Navbar = (props) => {
     const { user } = useContext(UserContext);
     const { dog } = useContext(DogContext);
 
-    console.log("user in navbar: ", user)
+    // console.log("user in navbar: ", user)
 
     const handleLogout = () => {
         localStorage.removeItem("token");
